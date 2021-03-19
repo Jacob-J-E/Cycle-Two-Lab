@@ -1,5 +1,5 @@
 # Cycle-Two-Lab
-My data analysis for lab cycle two 
+Data analysis for lab cycle two 
 
 This repository contains the analysis for:
 1. The Beer-Lambert Law
