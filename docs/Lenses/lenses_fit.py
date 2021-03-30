@@ -1,36 +1,47 @@
-#imports numpy
+#Written by Jacob J. Edginton
 import numpy as np
-#imports matplotlib
 import matplotlib.pyplot as plt
-#imports scipy
 import scipy.optimize as spo
-#imports u array
-u = np.array([233,176,372,136,127,473,123,584,119,682,154,302])
-#imports v array
-v = np.array([172,224,129,365,474,128,578,117,678,115,294,146])
-#redefine in reciprocal
-plotx = 1/u
-#redefine in reciprocal
-ploty = 1/v
-#plot scatter
-plt.scatter(plotx,ploty,color = 'red')
-#plot grid
-plt.grid()
-#Set x limit
-plt.xlim(0.9*min(plotx),1.1*max(plotx))
-#Set y limit
-plt.ylim(0.9*min(ploty),1.1*max(ploty))
-#Set initial guess
-inital = [-1,0]
+
 #define function
 def linear(x,m,c):
-    #return function value
+
     return m*x+c
+#adds arrays of data 
+u = np.array([233,176,372,136,127,473,123,584,119,682,154,302])
+v = np.array([172,224,129,365,474,128,578,117,678,115,294,146])
+
+#redefine as reciprocal
+plotx = 1/u
+ploty = 1/v
+
+
+#plot scatter
+
+
+
+#Set limits
+plt.xlim(0.9*min(plotx),1.1*max(plotx))
+plt.ylim(0.9*min(ploty),1.1*max(ploty))
+
+
+#Set initial guess
+inital = [-1,0]
+
 #curve fit
 po,cov = spo.curve_fit(linear,plotx,ploty,inital)
+sig_0 = np.sqrt(cov[0,0]) #The uncertainty in the slope
+sig_1 = np.sqrt(cov[1,1]) #The uncertainty in the intercept
+
 #print fit parameters
 print(po)
-#plot curve fit
+print(sig_0)
+print(sig_1)
+
+#Plot results
 plt.plot(plotx,linear(plotx,po[0],po[1]))
-#show plot
+plt.xlabel('1/s (1/mm)')
+plt.ylabel("1/s' (1/mm)")
+plt.scatter(plotx,ploty,color = 'red',marker='x')
+plt.grid()
 plt.show()
