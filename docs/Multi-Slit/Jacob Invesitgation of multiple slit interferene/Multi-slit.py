@@ -8,7 +8,7 @@ rel_spacing = np.array([0.69,1.97,3.49,4.49,5.41,6.56,-0.56,-1.88,-3.13,-4.25,-5
 y_error = rel_spacing*0.01
 
 #Preliminary plot of points
-plt.scatter(m,rel_spacing)
+plt.scatter(m,rel_spacing,marker='x')
 plt.xlabel('Minima Order (dimensionless)')
 plt.ylabel('Minima Spacing (m)')
 
@@ -25,9 +25,10 @@ print('Intercept = %.3e +/- %.3e' %(fit_space[1],sig_1))
 
 
 #Plot fitted data
-plt.errorbar(m,rel_spacing,yerr=y_error, fmt='o', mew=2, ms=3, capsize=4)
-plt.plot(m,pSpace(m))
+
+plt.plot(m,pSpace(m),color='#ED9121')
 plt.grid()
+plt.errorbar(m,rel_spacing,yerr=y_error,linestyle='none', mew=2, ms=3, capsize=0,color='black')
 plt.show()
 
 sigma_lamda = 1e-09
