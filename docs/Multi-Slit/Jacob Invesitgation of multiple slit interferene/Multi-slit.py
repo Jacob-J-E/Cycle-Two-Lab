@@ -1,3 +1,4 @@
+#Written by Jacob J. Edginton
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -31,6 +32,7 @@ plt.grid()
 plt.errorbar(m,rel_spacing,yerr=y_error,linestyle='none', mew=2, ms=3, capsize=0,color='black')
 plt.show()
 
+#Error propogation
 sigma_lamda = 1e-09
 sigma_d = 20e-06
 sigma_f = 1e-03
